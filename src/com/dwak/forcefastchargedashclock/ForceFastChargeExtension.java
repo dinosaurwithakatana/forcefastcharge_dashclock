@@ -5,6 +5,7 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 
 import android.content.Intent;
 import android.util.Log;
@@ -17,21 +18,13 @@ public class ForceFastChargeExtension extends DashClockExtension {
 	private String ffc_status = null;
 	@Override
 	protected void onUpdateData(int arg0) {
-		// TODO Auto-generated method stub
-		
-
 		Process p;
 		try {
-			p = Runtime.getRuntime().exec(new String[]{"su", "-c", "system/bin/sh"});
-			DataOutputStream stdin = new DataOutputStream(p.getOutputStream());
-			//from here all commands are executed with su permissions
-			stdin.writeBytes("cat /sys/kernel/fast_charge/force_fast_charge\n"); // \n executes the command
-			InputStream stdout = p.getInputStream();
-			byte[] buffer = new byte[16];
+			p= Runtime.getRuntime().exec("cat /sys/kernel/fast_charge/force_fast_charge");
+			BufferedReader reader = new BufferedReader(new InputStreamReader(p.getInputStream()));
 			int read;
 			String out = new String();
 			
-			BufferedReader reader = new BufferedReader(new InputStreamReader(stdout));
 			//read method will wait forever if there is nothing in the stream
 			//so we need to readit in another way than while((read=stdout.read(buffer))>0)
 			String line;
