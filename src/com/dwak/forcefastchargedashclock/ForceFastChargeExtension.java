@@ -30,10 +30,10 @@ public class ForceFastChargeExtension extends DashClockExtension {
 			String line;
 			while((line = reader.readLine()) != null){
 				out +=line + "\n";
-				System.out.println(out);
+//				System.out.println(out);
 				break;
 			}
-			Log.v("FFC",out);
+//			Log.v("FFC",out);
 			if(Integer.parseInt(out.trim())==0){
 				ffc_status = "OFF";
 			}
