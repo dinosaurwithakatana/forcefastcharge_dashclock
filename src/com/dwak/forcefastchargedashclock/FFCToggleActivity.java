@@ -30,21 +30,11 @@ public class FFCToggleActivity extends Activity {
 			process.waitFor();
 			Toast.makeText(this.getBaseContext(), "Force Fast Charge Toggled!"  , Toast.LENGTH_SHORT).show();
 		} catch (IOException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		//		DataOutputStream os = new DataOutputStream(process.getOutputStream());
 		catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
-		//	    for (String tmpCmd : cmds) {
-		//	            os.writeBytes(tmpCmd+"\n");
-		//	    }
-		//
-		//	    os.writeBytes("exit\n");
-		//	    os.flush();
-		//	    os.close();
 	}
 }
